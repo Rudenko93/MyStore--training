@@ -1,5 +1,5 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom"
-import "./App.css"
+import "./App.scss"
 
 import Home from "./pages/Home/Home"
 import Products from "./pages/Products/Products"
@@ -30,7 +30,7 @@ const router = createBrowserRouter([
 
 function App() {
   return (
-    <div>
+    <div className="app">
       <RouterProvider router={router} />
     </div>
   )
