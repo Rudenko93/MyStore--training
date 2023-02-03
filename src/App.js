@@ -1,19 +1,40 @@
-import { Routes, Route } from "react-router-dom"
+import { RouterProvider, createBrowserRouter } from "react-router-dom"
 import "./App.css"
-import Header from "./components/Header"
-import Footer from "./components/Footer"
-import Home from "./pages/Home"
+
+import Home from "./pages/Home/Home"
+import Products from "./pages/Products/Products"
+import Product from "./pages/Product/Product"
+
+import Layout from "./layouts/Layout"
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Layout />,
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
+      {
+        path: "products/:id",
+        element: <Products />,
+      },
+      {
+        path: "product/:id",
+        element: <Product />,
+      },
+    ],
+  },
+])
 
 function App() {
   return (
-    <div className="flex flex-col h-screen">
-      <Header />
-      <Routes>
-        <Route path="/" element={<Home />} />
-      </Routes>
-      <Footer />
+    <div>
+      <RouterProvider router={router} />
     </div>
   )
 }
+//createRoutesFromElements( <Route path="/" element={<Root />}> Route path=".." element={<.. />} /></Route>)
 
 export default App
