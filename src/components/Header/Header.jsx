@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { Link } from "react-router-dom"
 
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown"
@@ -7,10 +7,12 @@ import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined"
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined"
 import "./Header.scss"
+import Cart from "../Cart/Cart"
 
 function Header() {
   const leftLinks = ["Men", "Women", "Children", "Accessories"]
   const rightLinks = ["Hompage", "About", "Contacts", "Stores"]
+  const [open, setOpen] = useState(false)
 
   return (
     <header>
@@ -41,12 +43,13 @@ function Header() {
             <PersonOutlineOutlinedIcon />
             <FavoriteBorderOutlinedIcon />
             <div className="cartIcon">
-              <ShoppingCartOutlinedIcon />
+              <ShoppingCartOutlinedIcon onClick={() => setOpen(!open)} />
               <span>0</span>
             </div>
           </div>
         </div>
       </div>
+      {open && <Cart />}
     </header>
   )
 }

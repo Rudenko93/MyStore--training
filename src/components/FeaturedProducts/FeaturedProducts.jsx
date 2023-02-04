@@ -2,45 +2,46 @@ import React from "react"
 import Card from "../Card/Card"
 import "./FeaturedProducts.scss"
 
+const data = [
+  {
+    id: 1,
+    img: "/img/pexels-pixabay-52518.jpg",
+    img2: "/img/pexels-sam-lion-5709661.jpg",
+    title: "12231",
+    isNew: true,
+    oldPrice: 19,
+    price: 14,
+  },
+  {
+    id: 2,
+    img: "/img/pexels-pixabay-52518.jpg",
+    img2: "/img/pexels-sam-lion-5709661.jpg",
+    title: "12232",
+    isNew: true,
+    oldPrice: 19,
+    price: 14,
+  },
+  {
+    id: 3,
+    img: "/img/pexels-sam-lion-5709661.jpg",
+    img2: "/img/pexels-pixabay-52518.jpg",
+    title: "12233",
+    isNew: false,
+    oldPrice: 19,
+    price: 14,
+  },
+  {
+    id: 4,
+    img: "/img/pexels-sam-lion-5709661.jpg",
+    img2: "/img/pexels-pixabay-52518.jpg",
+    title: "12234",
+    isNew: false,
+    oldPrice: 19,
+    price: 14,
+  },
+]
+
 function FeaturedProducts({ type }) {
-  const data = [
-    {
-      id: 1,
-      img: "/img/pexels-pixabay-52518.jpg",
-      img2: "/img/pexels-sam-lion-5709661.jpg",
-      title: "12231",
-      isNew: true,
-      oldPrice: 19,
-      price: 14,
-    },
-    {
-      id: 2,
-      img: "/img/pexels-pixabay-52518.jpg",
-      img2: "/img/pexels-sam-lion-5709661.jpg",
-      title: "12232",
-      isNew: true,
-      oldPrice: 19,
-      price: 14,
-    },
-    {
-      id: 3,
-      img: "/img/pexels-sam-lion-5709661.jpg",
-      img2: "/img/pexels-pixabay-52518.jpg",
-      title: "12233",
-      isNew: false,
-      oldPrice: 19,
-      price: 14,
-    },
-    {
-      id: 4,
-      img: "/img/pexels-sam-lion-5709661.jpg",
-      img2: "/img/pexels-pixabay-52518.jpg",
-      title: "12234",
-      isNew: false,
-      oldPrice: 19,
-      price: 14,
-    },
-  ]
   return (
     <div className="featuredProducts">
       <div className="top">
