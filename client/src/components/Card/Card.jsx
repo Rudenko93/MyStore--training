@@ -3,7 +3,6 @@ import "./Card.scss"
 import { Link } from "react-router-dom"
 
 function Card({ item }) {
-  console.log(item)
   return (
     <Link to={`/product/${item.id}`}>
       <div className="card">
