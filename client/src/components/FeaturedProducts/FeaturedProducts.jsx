@@ -1,68 +1,12 @@
-import axios from "axios"
-import React, { useEffect, useState } from "react"
+import React from "react"
 import Card from "../Card/Card"
+import useFetch from "../../hooks/useFetch"
 import "./FeaturedProducts.scss"
 
-const data = [
-  {
-    id: 1,
-    img: "/img/pexels-pixabay-52518.jpg",
-    img2: "/img/pexels-sam-lion-5709661.jpg",
-    title: "12231",
-    isNew: true,
-    oldPrice: 19,
-    price: 14,
-  },
-  {
-    id: 2,
-    img: "/img/pexels-pixabay-52518.jpg",
-    img2: "/img/pexels-sam-lion-5709661.jpg",
-    title: "12232",
-    isNew: true,
-    oldPrice: 19,
-    price: 14,
-  },
-  {
-    id: 3,
-    img: "/img/pexels-sam-lion-5709661.jpg",
-    img2: "/img/pexels-pixabay-52518.jpg",
-    title: "12233",
-    isNew: false,
-    oldPrice: 19,
-    price: 14,
-  },
-  {
-    id: 4,
-    img: "/img/pexels-sam-lion-5709661.jpg",
-    img2: "/img/pexels-pixabay-52518.jpg",
-    title: "12234",
-    isNew: false,
-    oldPrice: 19,
-    price: 14,
-  },
-]
-
 function FeaturedProducts({ type }) {
-  const [products, setProducts] = useState([])
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = await axios.get(
-          process.env.REACT_APP_API_URL + "/products",
-          {
-            headers: {
-              Authorization: "bearer " + process.env.REACT_APP_API_TOKEN,
-            },
-          }
-        )
-        console.log(data)
-      } catch (err) {
-        console.log(err)
-      }
-    }
-    fetchData()
-  }, [])
+  const { data, loading, error } = useFetch(
+    `/products?populate=*&[filters][type][$eq]=${type}`
+  )
 
   return (
     <div className="featuredProducts">
@@ -77,9 +21,11 @@ function FeaturedProducts({ type }) {
         </p>
       </div>
       <div className="bottom">
-        {data.map((item) => (
-          <Card item={item} key={item.id} />
-        ))}
+        {error
+          ? "Error"
+          : loading
+          ? "loading"
+          : data.map((item) => <Card item={item} key={item.id} />)}
       </div>
     </div>
   )

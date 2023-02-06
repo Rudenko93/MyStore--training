@@ -23,7 +23,7 @@ function Header() {
             <KeyboardArrowDownIcon />
           </div>
           <div className="item">
-            <stan>USD</stan>
+            <span>USD</span>
             <KeyboardArrowDownIcon />
           </div>
 
