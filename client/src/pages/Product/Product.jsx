@@ -3,36 +3,53 @@ import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart"
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder"
 import BalanceIcon from "@mui/icons-material/Balance"
 import "./Product.scss"
+import useFetch from "../../hooks/useFetch"
+import { useParams } from "react-router-dom"
 
 function Product() {
-  const data = [
-    "https://images.pexels.com/photos/12528815/pexels-photo-12528815.jpeg?auto=compress&cs=tinysrgb&w=1600",
-    "https://images.pexels.com/photos/818992/pexels-photo-818992.jpeg?auto=compress&cs=tinysrgb&w=1600",
-  ]
-  // const id = useParams().id;
+  const id = useParams().id
+  const { data, loading, error } = useFetch(`/products/${id}?populate=*`)
+  console.log(data)
   const [selectedImg, setSelectedImg] = useState(data[0])
   const [quantity, setQuantity] = useState(1)
 
-  return (
+  return loading ? (
+    "Loading..."
+  ) : (
     <div className="product">
       <div className="left">
         <div className="images">
-          <img src={data[0]} alt="0" onClick={(e) => setSelectedImg(data[0])} />
-          <img src={data[1]} alt="1" onClick={(e) => setSelectedImg(data[1])} />
+          <img
+            src={
+              process.env.REACT_APP_UPLOAD_URL +
+              data?.attributes?.img?.data?.attributes?.url
+            }
+            alt="0"
+            onClick={(e) => setSelectedImg("img")}
+          />
+          <img
+            src={
+              process.env.REACT_APP_UPLOAD_URL +
+              data?.attributes?.img2?.data?.attributes?.url
+            }
+            alt="1"
+            onClick={(e) => setSelectedImg("img2")}
+          />
         </div>
         <div className="mainImg">
-          <img src={selectedImg} alt="selectedImg" />
+          <img
+            src={
+              process.env.REACT_APP_UPLOAD_URL +
+              data?.attributes[selectedImg]?.data?.attributes?.url
+            }
+            alt="selectedImg"
+          />
         </div>
       </div>
       <div className="right">
-        <h1>Title</h1>
-        <span className="price">${221}</span>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis saepe
-          temporibus vitae perspiciatis ab vero quae alias exercitationem fugit
-          eius molestiae itaque voluptas, iste, est officia magnam consectetur
-          dignissimos animi!
-        </p>
+        <h1>{data?.attributes?.title}</h1>
+        <span className="price">${data?.attributes?.price}</span>
+        <p>{data?.attributes?.desc}</p>
         <div className="quantity">
           <button
             onClick={() => setQuantity((prev) => (prev === 1 ? 1 : prev - 1))}>
