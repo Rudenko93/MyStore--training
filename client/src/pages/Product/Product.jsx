@@ -5,6 +5,8 @@ import BalanceIcon from "@mui/icons-material/Balance"
 import "./Product.scss"
 import useFetch from "../../hooks/useFetch"
 import { useParams } from "react-router-dom"
+import { useDispatch, useSelector } from "react-redux"
+import { addToCart, removeFromCart } from "../../store/cartSlice"
 
 function Product() {
   const id = useParams().id
@@ -12,6 +14,8 @@ function Product() {
   console.log(data)
   const [selectedImg, setSelectedImg] = useState(data[0])
   const [quantity, setQuantity] = useState(1)
+
+  const dispatch = useDispatch()
 
   return loading ? (
     "Loading..."
@@ -58,7 +62,20 @@ function Product() {
           {quantity}
           <button onClick={() => setQuantity((prev) => prev + 1)}>+</button>
         </div>
-        <button className="add">
+        <button
+          className="add"
+          onClick={() =>
+            dispatch(
+              addToCart({
+                id: data.id,
+                title: data.attributes.title,
+                desc: data.attributes.desc,
+                price: data.attributes.price,
+                img: data.attributes.img.data.attributes.url,
+                quantity,
+              })
+            )
+          }>
           <AddShoppingCartIcon /> ADD TO CART
         </button>
         <div className="links">
