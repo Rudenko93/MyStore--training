@@ -10,7 +10,6 @@ import "./Header.scss"
 import Cart from "../Cart/Cart"
 
 function Header() {
-  const leftLinks = ["Men", "Women", "Children", "Accessories"]
   const rightLinks = ["Hompage", "About", "Contacts", "Stores"]
   const [open, setOpen] = useState(false)
 
@@ -27,9 +26,21 @@ function Header() {
             <KeyboardArrowDownIcon />
           </div>
 
-          {leftLinks.map((link) => (
-            <Link to={"/products/" + link.toLowerCase()}>{link}</Link>
-          ))}
+          <div className="item">
+            <Link className="link" to="/products/1">
+              Women
+            </Link>
+          </div>
+          <div className="item">
+            <Link className="link" to="/products/2">
+              Men
+            </Link>
+          </div>
+          <div className="item">
+            <Link className="link" to="/products/3">
+              Children
+            </Link>
+          </div>
         </div>
         <Link className="center" to={"/"}>
           MyStore
