@@ -10,7 +10,7 @@ import "./Header.scss"
 import Cart from "../Cart/Cart"
 
 function Header() {
-  const rightLinks = ["Hompage", "About", "Contacts", "Stores"]
+  // const rightLinks = ["Hompage", "About", "Contacts", "Stores"]
   const [open, setOpen] = useState(false)
 
   return (
@@ -46,9 +46,9 @@ function Header() {
           MyStore
         </Link>
         <div className="right">
-          {rightLinks.map((link) => (
+          {/* {rightLinks.map((link) => (
             <Link to={"/"}>{link}</Link>
-          ))}
+          ))} */}
           <div className="icons">
             <SearchIcon />
             <PersonOutlineOutlinedIcon />
