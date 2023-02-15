@@ -27,17 +27,17 @@ function Header() {
           </div>
 
           <div className="item">
-            <Link className="link" to="/products/1">
+            <Link className="link" to="/products/women">
               Women
             </Link>
           </div>
           <div className="item">
-            <Link className="link" to="/products/2">
+            <Link className="link" to="/products/men">
               Men
             </Link>
           </div>
           <div className="item">
-            <Link className="link" to="/products/3">
+            <Link className="link" to="/products/children">
               Children
             </Link>
           </div>
@@ -46,9 +46,19 @@ function Header() {
           MyStore
         </Link>
         <div className="right">
-          {/* {rightLinks.map((link) => (
-            <Link to={"/"}>{link}</Link>
-          ))} */}
+          <Link className="link" to="/">
+            Hompage
+          </Link>
+          <Link className="link" to="/">
+            About
+          </Link>
+          <Link className="link" to="/">
+            Contacts
+          </Link>
+          <Link className="link" to="/">
+            Stores
+          </Link>
+
           <div className="icons">
             <SearchIcon />
             <PersonOutlineOutlinedIcon />

@@ -12,7 +12,7 @@ function Product() {
   const id = useParams().id
   const { data, loading, error } = useFetch(`/products/${id}?populate=*`)
   console.log(data)
-  const [selectedImg, setSelectedImg] = useState(data[0])
+  const [selectedImg, setSelectedImg] = useState("img")
   const [quantity, setQuantity] = useState(1)
 
   const dispatch = useDispatch()
